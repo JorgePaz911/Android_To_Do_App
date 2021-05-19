@@ -43,5 +43,4 @@ public class DoisterRepository {
     public void delete(Task task){
         TaskRoomDatabase.databaseWriteExecutor.execute(() -> taskDao.delete(task));
     }
-
 }
