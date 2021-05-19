@@ -83,7 +83,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         @Override
         public void onClick(View v) {
-            Task currTask = taskList.get(getAdapterPosition());;
+            Task currTask = taskList.get(getAdapterPosition());
             int id = v.getId();
             if(id == R.id.todo_row_layout){
                 onTodoClickListener.onTodoClick(currTask);

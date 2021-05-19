@@ -76,8 +76,6 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         tomorrowChip.setOnClickListener(this);
         nextWeekChip.setOnClickListener(this);
 
-
-
         return view;
     }
 
@@ -114,29 +112,32 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
             }
         });
 
-        priorityButton.setOnClickListener(v -> {
-            Utils.hideSoftKeyboard(v);
-            priorityRadioGroup.setVisibility(priorityRadioGroup.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
-            priorityRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                    if(priorityRadioGroup.getVisibility() == View.VISIBLE){
-                        selectedButtonId = checkedId;
-                        selectedRadioButton = view.findViewById(selectedButtonId);
-                        if(selectedRadioButton.getId() == R.id.radioButton_high){
-                            priority = Priority.HIGH;
-                        }else if(selectedRadioButton.getId() == R.id.radioButton_med){
-                            priority = Priority.MEDIUM;
-                        }else if(selectedRadioButton.getId() == R.id.radioButton_low){
-                            priority = Priority.LOW;
-                        }else{
+        priorityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.hideSoftKeyboard(v);
+                priorityRadioGroup.setVisibility(priorityRadioGroup.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+                priorityRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                        if (priorityRadioGroup.getVisibility() == View.VISIBLE) {
+                            selectedButtonId = checkedId;
+                            selectedRadioButton = view.findViewById(selectedButtonId);
+                            if (selectedRadioButton.getId() == R.id.radioButton_high) {
+                                priority = Priority.HIGH;
+                            } else if (selectedRadioButton.getId() == R.id.radioButton_med) {
+                                priority = Priority.MEDIUM;
+                            } else if (selectedRadioButton.getId() == R.id.radioButton_low) {
+                                priority = Priority.LOW;
+                            } else {
+                                priority = Priority.LOW;
+                            }
+                        } else {
                             priority = Priority.LOW;
                         }
-                    }else{
-                        priority = Priority.LOW;
                     }
-                }
-            });
+                });
+            }
         });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
