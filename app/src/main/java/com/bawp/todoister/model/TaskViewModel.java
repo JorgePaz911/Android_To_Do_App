@@ -25,7 +25,6 @@ public class TaskViewModel extends AndroidViewModel {
     }
 
     //same as repository
-    //WHY IS THIS NOT STATIC VS OTHER METHODS?
     public LiveData<List<Task>> getAllTasks(){
         return allTasks;
     }

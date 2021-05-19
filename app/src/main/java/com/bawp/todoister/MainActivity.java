@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnTodoClickListen
             public void onClick(View view) {
                 //Task task = new Task("Task " + counter++, Priority.MEDIUM, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(),false);
                 Task task = new Task();
+                //item to be sent between activity and fragment
                 sharedViewModel.selectItem(task);
                 showBottomSheetDialog();
             }
